@@ -1,0 +1,26 @@
+<div class="col-md-11 col-md-offset-1">
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            <h3 class="panel-title">Add New List Items</h3>
+        </div>
+        <div class="panel-body">
+            <form name="addListForm">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1">
+                            <input type="text" class="form-control" placeholder="What are the tasks for today?" ng-model="nTask" ng-enter="newTask(nTask)"/>
+                            <ul>
+                                <li ng-repeat="i in newitem track by $index">{{i}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-5">
+                            <button type="submit" class="btn btn-warning">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
