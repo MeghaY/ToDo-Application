@@ -1,0 +1,21 @@
+html, body {
+  margin: 5px;
+}
+
+body {
+  background: #ffffff;
+  font-family: "calibri", Helvetica, Arial, sans-serif;
+  color: #333;
+  padding-top: 10px;
+}
+label{
+  font-family: "calibri", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+}
+.todo-complete{
+  text-decoration: line-through;
+  color: #000000;
+}
+.todo-notcomplete{
+  color: #000000;
+}

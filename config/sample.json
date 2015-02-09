@@ -1,0 +1,8 @@
+{
+  "parse": {
+    "appId": "YOUR_PARSE_APPILICATION_KEY",
+    "jsKey": "YOUR_PARSE_JAVASCRIPT_KEY",
+    "restKey": "YOUR_PARSE_REST_KEY",
+    "apiEndPoint": "https://api.parse.com/1/classes"
+  }
+}

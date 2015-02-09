@@ -6,3 +6,9 @@ bower_components/
 
 /node_modules/*
 test/
+.buildignore
+yeoman.png
+favicon.ico
+robots.txt
+config/development.json
+.htaccess

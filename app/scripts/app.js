@@ -1,10 +1,6 @@
 'use strict';
 
 /**
- * @ngdoc overview
- * @name testAngularApp
- * @description
- * # testAngularApp
  *
  * Main module of the application.
  */
@@ -17,19 +13,15 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.router',
-    'm-keyPress'
+    'cgBusy'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
-      .state('main', {
-        url: "/main",
-        templateUrl: "views/main.html",
-        controller: "MainController"
-      })
-      .state('addnew',{
-        url:"/addnew",
-        templateUrl: "views/addNew.html",
-        controller: "AddController"
+      .state('addnew', {
+        url: '/newItems',
+        templateUrl: 'views/addNew.html',
+        controller: 'AddController',
+        authenticate: false
       });
-    $urlRouterProvider.otherwise('/main');
+    $urlRouterProvider.otherwise('/newItems');
   });
