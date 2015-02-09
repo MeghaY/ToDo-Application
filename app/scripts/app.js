@@ -13,7 +13,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.router',
-    'cgBusy'
+    'cgBusy',
+    'xeditable'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider

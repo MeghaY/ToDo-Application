@@ -1,1 +1,7 @@
 A Todo Application using AngularJS, NodeJS and Parse Frameworks
+
+Tasks it performs:
+1) Creating a new todo item and save it in Parse using Rest API calls
+2) Deleting a particular todo from the list
+3) Updating a todo item (using Angular-xeditable component for better UI)
+4) Marking the todo item as done/undone using the checkbox

@@ -52,21 +52,42 @@ angular.module('TodoApp')
             .then(function(response){
               $scope.getAllTodos = response.data.results;
             });
-        })
+        });
 
+    };
+
+    $scope.updateTodo = function(data, id){
+
+      $http.put('/api/updateTodo', data, {
+        headers: {
+          'Content-type': 'application/json; charset=utf-8'
+        },
+        params:{
+          todoId: id
+        }
+      })
+        .then(function(response){
+          console.log('Response from Update in todoitem: '+ JSON.stringify(response));
+          $scope.myPromise = $http.get('/api/todos')
+            .then(function(response){
+              $scope.getAllTodos = response.data.results;
+            });
+        });
     };
 
     /*Function for checking if the todoitem is marked as done, if so, it will update the completed field in the
     backend with value true and will change the css style for that item in UI*/
     $scope.isCompleted = function(status, id){
-      if(status === true){
         var data = {
-          todoId: id,
           completed: status
         };
+
         $http.put('/api/updateTodo',data,{
           headers: {
             'Content-type': 'application/json; charset=utf-8'
+          },
+          params: {
+            todoId: id
           }
         })
           .then(function(response){
@@ -74,6 +95,4 @@ angular.module('TodoApp')
           });
 
       }
-    }
-
   }]);
