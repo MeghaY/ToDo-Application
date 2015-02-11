@@ -1,7 +1,7 @@
 ## About Me
 
 I am Megha Desai and this is my portfolio as a front-end developer. I am passionate about building creative and responsive websites using advanced technologies.
-Here is one of my recent development project. I believe in this thought "If it doesn't challenge you, it doesn't change you"
+Here is one of my recent development projects. I believe in the notion "If it doesn't challenge you, it doesn't change you"
 
 
 Todo Application
