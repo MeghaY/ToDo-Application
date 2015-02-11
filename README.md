@@ -3,6 +3,8 @@ My name is Megha Desai. This is my portfolio as a developer
 Todo Application
 ================
 
+[![Join the chat at https://gitter.im/MeghaY/ToDo-Application](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/MeghaY/ToDo-Application?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 A Todo Application designed using AngularJS as a Front-end, NodeJS as a server-side backend and Parse framework as a database
 
 ## Setup
