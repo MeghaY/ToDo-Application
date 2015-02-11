@@ -18,7 +18,7 @@ nconf.env()
 
 app.set('port', process.argv[2]|| 8080);
 app.use(morgan('dev'));
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(methodOverride());
 
@@ -33,6 +33,6 @@ app.put('/api/updateTodo', api.updateTodo);
 
 
 app.listen(app.get('port'));
-console.log('Example app listening on port',  app.get('port'));
+console.log('Todo app listening on port http://localhost:',  app.get('port'));
 
 
