@@ -7,7 +7,7 @@ A Todo Application designed using AngularJS as a Front-end, NodeJS as a server-s
 
 ## Setup
 
-1) ```git clone https://github.com/MeghaY/ToDo-Application.git```
+1) `git clone https://github.com/MeghaY/ToDo-Application.git`
   i) cloning the project in ToDo-Application folder
 
 2) `cd ToDo-Application`
