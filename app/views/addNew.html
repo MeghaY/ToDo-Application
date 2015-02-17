@@ -1,5 +1,5 @@
 
-<div class="col-md-10 col-md-offset-2">
+<div class="col-md-9 col-md-offset-2">
     <div class="well">
         <form name="addListForm">
             <div class="form-group">
@@ -13,57 +13,55 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-3 col-md-offset-5">
-                        <button type="submit" class="btn btn-success" ng-click="saveTodo()">Save</button>
+                        <button type="submit" class="btn custom-button" ng-click="saveTodo()">Add Todo Task</button>
                     </div>
                 </div>
             </div>
         </form>
     </div>
+    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
 
-    <div class="col-md-8 col-md-offset-2">
-        <div class="panel panel-success">
-            <div class="panel-heading">
-                <h3 class="panel-title">Todo List</h3>
-            </div>
-            <div class="panel-body">
-                <div cg-busy="myPromise"></div>
+</div>
 
-                <table class="table table-hover">
-                    <thead>
-                    </thead>
-                    <tbody>
-                    <tr ng-repeat="todo in getAllTodos | orderBy: '-updatedAt'">
-                        <td>
-                            <input type="checkbox" ng-model="todo.completed" ng-change="isCompleted(todo.completed, todo.objectId)">
-                        </td>
-                        <!--Using angular xeditable for making update and delete todoitem task easier
-                        Here is the link to follow for more explanation: http://vitalets.github.io/angular-xeditable/#editable-form -->
-                        <td>
-                            <span editable-text="user.name" e-name="todoItem" e-form="todoform" e-required>
-                                <label ng-class="{'todo-complete': todo.completed, 'todo-notcomplete': !todo.completed}">{{todo.todoItem}}</label>
-                            </span>
-                        </td>
-                        <!--<td> style="white-space: nowrap">-->
-                        <td>
-                            <!-- form -->
-                            <form editable-form name="todoform" onbeforesave="updateTodo($data, todo.objectId)" ng-show="todoform.$visible" class="form-buttons form-inline">
-                                <button type="submit" ng-disabled="todoform.$waiting" class="btn btn-success btn-sm">
-                                    save
-                                </button>
-                                <button type="button" ng-disabled="todoform.$waiting" ng-click="todoform.$cancel()" class="btn btn-default btn-sm">
-                                    cancel
-                                </button>
-                            </form>
-                            <div ng-show="!todoform.$visible">
-                                <span class="glyphicon glyphicon-pencil" ng-click="todoform.$show()"></span>
-                                <span class="glyphicon glyphicon-trash" ng-click="deleteTodo(todo.objectId)"></span>
-                            </div>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-
+        <div class="col-md-9 col-md-offset-2" ng-show="getAllTodos.length > 0">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Todo List</h3>
+                </div>
+                <div class="panel-body">
+                    <div cg-busy="myPromise"></div>
+                    <table class="table table-hover">
+                        <tbody>
+                        <tr ng-repeat="todo in getAllTodos | orderBy: '-updatedAt'">
+                            <td>
+                                <input type="checkbox" ng-model="todo.completed" ng-change="isCompleted(todo.completed, todo.objectId)">
+                            </td>
+                            <!--Using angular xeditable for making update and delete todoitem task easier
+                            Here is the link to follow for more explanation: http://vitalets.github.io/angular-xeditable/#editable-form -->
+                            <td>
+                                <span editable-text="user.name" e-name="todoItem" e-form="todoform" e-required>
+                                    <label ng-class="{'todo-complete': todo.completed, 'todo-notcomplete': !todo.completed}">{{todo.todoItem}}</label>
+                                </span>
+                            </td>
+                            <!--<td> style="white-space: nowrap">-->
+                            <td>
+                                <!-- form -->
+                                <form editable-form name="todoform" onbeforesave="updateTodo($data, todo.objectId)" ng-show="todoform.$visible" class="form-buttons form-inline">
+                                    <button type="submit" ng-disabled="todoform.$waiting" class="btn custom-button btn-sm">
+                                        save
+                                    </button>
+                                    <button type="button" ng-disabled="todoform.$waiting" ng-click="todoform.$cancel()" class="btn custom-button btn-sm">
+                                        cancel
+                                    </button>
+                                </form>
+                                <div ng-show="!todoform.$visible">
+                                    <span class="glyphicon glyphicon-pencil" ng-click="todoform.$show()"></span>
+                                    <span class="glyphicon glyphicon-trash" ng-click="deleteTodo(todo.objectId)"></span>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
-</div>

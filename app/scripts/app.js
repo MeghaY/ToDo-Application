@@ -14,15 +14,18 @@ angular
     'ngTouch',
     'ui.router',
     'cgBusy',
-    'xeditable'
+    'xeditable',
+    'ParseService',
+    'AlertService'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('addnew', {
         url: '/newItems',
         templateUrl: 'views/addNew.html',
-        controller: 'AddController',
+        controller: 'TodoController',
         authenticate: false
       });
     $urlRouterProvider.otherwise('/newItems');
   });
+
