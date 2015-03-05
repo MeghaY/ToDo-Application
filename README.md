@@ -44,3 +44,11 @@ A Todo Application designed using AngularJS as a Front-end, NodeJS as a server-s
 2. Deleting a particular todo from the list
 3. Updating a todo item (using Angular-xeditable component for better UI)
 4. Marking the todo item as done/undone using the checkbox
+5. User signup/login functionality added with form validations
+6. User can signup or login using their credentials and can see their todos
+
+## Coming next..
+1. logout functionality
+2. tabs view for showing active, done and all todo items
+3. search functionality for searching todos
+4. pagination functionality for todos
