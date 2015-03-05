@@ -4,20 +4,23 @@
  * Controller of the TodoApp
  */
 angular.module('TodoApp')
-  .controller('TodoController',['$scope','$state', '$http','$todoParse','$alert', function ($scope, $state, $http, $todoParse, $alert) {
+  .controller('TodoController',['$scope','$state','$stateParams','$sessionStorage','$todoParse','$alert', function ($scope, $state, $stateParams, $sessionStorage, $todoParse, $alert) {
     $scope.newTodo = {};
     $scope.getAllTodos = [];
 
+    $scope.fname = $sessionStorage.currentUser.firstName;
+
     //This will load the page with all the todos initially created using angular resource service
 
-    $scope.myPromise = $todoParse.todos.query({})
+    $scope.myPromise = $todoParse.todos.all({session: $sessionStorage.currentUser.sessionToken})
       .$promise.then(function(todos){
         $scope.getAllTodos = todos;
-        console.log('todos: '+ $scope.getAllTodos);
-        return $scope.getAllTodos;
+//        console.log('todos: '+ $scope.getAllTodos.length);
       },function(error) {
         console.log(error);
-        $alert.addAlert('You need to add the todo item to see that in the table view', 'danger',3000);
+        if (error && error.data && error.data.error){
+          $alert.addAlert(error.data.error.error, 'danger',3000);
+        }
       });
 
     $scope.closeAlert = $alert.closeAlert;
@@ -32,49 +35,72 @@ angular.module('TodoApp')
       $todoParse.todos.save(data)
         .$promise.then(function (response) {
           $scope.newTodo.name = '';
-          console.log('Response from Post call: ' + response);
+          //setting the ACLs for new todoitem added based on current user's sessiontoken via update call to parse endpoint
+          $scope.ACL = {};
+          $scope.ACL[$sessionStorage.currentUser.objectId] = {
+            "read": true,
+            "write": true
+          };
+          var userACL = {
+            ACL: $scope.ACL
+          };
+          $todoParse.todos.update({todoId:response.objectId,session: $sessionStorage.currentUser.sessionToken}, userACL)
+            .$promise.then(function(response){
+              console.log(response);
+            },function(error) {
+              console.log(error);
+              if (error && error.data && error.data.error){
+                $alert.addAlert(error.data.error.error, 'danger',3000);
+              }
+            });
         })
         .then(function(){
-          $todoParse.todos.query({})
+          $todoParse.todos.all({session: $sessionStorage.currentUser.sessionToken})
             .$promise.then(function(todos){
+//              console.log('todos: '+ JSON.stringify(todos, null, 2));
               $scope.getAllTodos = todos;
-              return $scope.getAllTodos;
             },function(error) {
               console.log(error);
-              $alert.addAlert('Unable to save a todo item', 'danger',3000);
+              if (error && error.data && error.data.error){
+                $alert.addAlert(error.data.error.error, 'danger',3000);
+              }
             });
         });
     };
 
 
-    //function for deleting the todoitem based on the objectid
+    //function for deleting the todoitem based on the objectid and current user's sessiontoken
     $scope.deleteTodo = function(todoObjectId){
-      $todoParse.todos.remove({todoId: todoObjectId})
+      $todoParse.todos.remove({todoId: todoObjectId,session: $sessionStorage.currentUser.sessionToken})
         .$promise.then(function(response){
           console.log('Response from delete todo: '+ response);
-          $scope.myPromise = $todoParse.todos.query({})
+          $scope.myPromise = $todoParse.todos.all({session: $sessionStorage.currentUser.sessionToken})
             .$promise.then(function(todos){
               $scope.getAllTodos = todos;
               return $scope.getAllTodos;
             },function(error) {
               console.log(error);
-              $alert.addAlert('Unable to delete the todo item', 'danger',3000);
+              if (error && error.data && error.data.error){
+                $alert.addAlert(error.data.error.error, 'danger',3000);
+              }
             });
         });
 
     };
 
+    //function for updating the todoitem based on the objectid and current user's sessiontoken
     $scope.updateTodo = function(data, id){
-      $todoParse.todos.update({todoId: id}, data)
-        .$promise.then(function(response){
+      $todoParse.todos.update({todoId: id,session: $sessionStorage.currentUser.sessionToken}, data)
+        .$promise.then(function(){
 //          console.log('Response from Update in todoitem: '+ response);
-          $scope.myPromise = $todoParse.todos.query({})
+          $scope.myPromise = $todoParse.todos.all({session: $sessionStorage.currentUser.sessionToken})
             .$promise.then(function(todos){
               $scope.getAllTodos = todos;
-              return $scope.getAllTodos;
             },function(error) {
               console.log(error);
-              $alert.addAlert('Update was not successful', 'danger',3000);
+              if (error && error.data && error.data.error){
+                $alert.addAlert(error.data.error.error, 'danger',3000);
+              }
             });
         });
     };
@@ -85,9 +111,14 @@ angular.module('TodoApp')
         var data = {
           completed: status
         };
-      $todoParse.todos.update({todoId: id}, data)
+      $todoParse.todos.update({todoId: id, session: $sessionStorage.currentUser.sessionToken}, data)
         .$promise.then(function(response){
           console.log('Response from Update: '+ response);
+        },function(error) {
+          console.log(error);
+          if (error && error.data && error.data.error){
+            $alert.addAlert(error.data.error.error, 'danger',3000);
+          }
         });
       };
   }]);

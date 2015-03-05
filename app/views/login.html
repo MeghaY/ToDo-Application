@@ -1,0 +1,38 @@
+<header>
+    <div class="row headerBackground">
+        <h3 class="headerTitle">Todo App</h3>
+    </div>
+</header>
+<br>
+<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">Login</h3>
+            </div>
+            <div class="panel-body">
+                <!-- pass in the variable if our form is valid or invalid -->
+                <form name="loginForm" role="form" ng-submit="loginForm.$valid && loginSubmit()" novalidate>
+                    <!-- EMAIL/Username -->
+                    <div class="form-group required" ng-class="{ 'has-error' : (submitted && loginForm.email.$invalid) || loginForm.email.$invalid && !loginForm.email.$pristine}">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" class="form-control" id="email" ng-model="login.username" placeholder="yourexample@example.com" required="">
+                        <p name="loginEmailError" ng-show="(submitted && loginForm.email.$invalid) || loginForm.email.$invalid && !loginForm.email.$pristine" class="help-block"> Please enter a valid email.</p>
+                    </div>
+                    <!-- PASSWORD -->
+                    <div class="form-group required" ng-class="{ 'has-error' : (submitted && loginForm.password.$invalid) || loginForm.password.$invalid && !loginForm.password.$pristine}">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" ng-model="login.password" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-validator"
+                               placeholder="" required="" minlength = "8">
+                        <p ng-show="(submitted && loginForm.password.$invalid) || loginForm.password.$invalid && !loginForm.password.$pristine" class="help-block">Password is required</p>
+                        <p ng-show="loginForm.password.$error.minlength" class="help-block">Password should be atleast 8 characters long</p>
+                    </div>
+                    <button type="submit" class="btn custom-button" ng-click="submitted=true">Login</button>
+
+                    <button type="submit" class="btn custom-button" ui-sref="signup">Signup</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

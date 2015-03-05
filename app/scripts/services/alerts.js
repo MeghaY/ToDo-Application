@@ -3,7 +3,7 @@
  */
 
 'use strict';
-//Alert service for showing stylish success and error message on UI
+//Alert service for showing & hiding stylish success and error message received from server side on UI
 angular.module('AlertService',[])
   .factory('$alert',['$rootScope', '$timeout', function($rootScope, $timeout){
     $rootScope.alerts = [];

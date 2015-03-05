@@ -1,16 +1,36 @@
 html, body {
   margin: 5px;
 }
-
 body {
   background: #ffffff;
   font-family: "calibri", Helvetica, Arial, sans-serif;
   color: #333;
-  padding-top: 10px;
+  padding-top: 2px;
+}
+.headerBackground{
+  height: 150px;
+  background: -webkit-linear-gradient(left top ,peachpuff,lightcoral); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(bottom right, lightcoral ,palevioletred); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(bottom right, lightcoral ,palevioletred); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to bottom right ,peachpuff, lightcoral); /* Standard syntax */
+
+}
+.headerTitle{
+  font-family: "Times New Roman",Helvetica, Arial, sans-serif;
+  font-size: 50px;
+  text-align: center;
+  text-shadow: 2px 2px #f5f5f5;
+  color: white;
 }
 label{
   font-family: "calibri", Helvetica, Arial, sans-serif;
   font-size: 15px;
+}
+.column-padding-left{
+  padding-left: 0;
+}
+.column-padding-right{
+  padding-right: 0;
 }
 .todo-complete{
   text-decoration: line-through;
@@ -47,15 +67,34 @@ table:after{
 }
 .panel{
   border-color: lightcoral;
-  opacity: 0.8;
+  opacity: 0.9;
 
 }
 .panel-heading{
   background-color: lightcoral;
   border-color: lightcoral;
-  opacity: 0.8;
   color: white;
+
 }
 .well{
   background-color: #f6f6f3;
+}
+.required label:after {
+  content: ' *';
+  display:inline;
+}
+.alert-success {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+}
+.alert-danger {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94948;
+}
+.alert-info {
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+  color: #3a87ad;
 }

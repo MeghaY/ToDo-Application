@@ -1,11 +1,21 @@
-
+<header>
+    <div class="row headerBackground">
+        <h3 class="headerTitle">Todo App</h3>
+    </div>
+</header>
+<br>
+<div class="row">
+    <div class="col-md-3 col-md-offset-9">
+        <h3>Welcome {{fname}}!</h3>
+    </div>
+</div>
 <div class="col-md-9 col-md-offset-2">
     <div class="well">
         <form name="addListForm">
-            <div class="form-group">
+            <div class="form-group required">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <input type="text" class="form-control" placeholder="What are the tasks for today?"
+                        <input type="text" class="form-control" placeholder="Add a new task..."
                                ng-model="newTodo.name" required=""/>
                     </div>
                 </div>
@@ -13,13 +23,13 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-3 col-md-offset-5">
-                        <button type="submit" class="btn custom-button" ng-click="saveTodo()">Add Todo Task</button>
+                        <button type="submit" class="btn custom-button" ng-click="saveTodo()">Add Task</button>
                     </div>
                 </div>
             </div>
         </form>
     </div>
-    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
 
 </div>
 
@@ -43,7 +53,6 @@
                                     <label ng-class="{'todo-complete': todo.completed, 'todo-notcomplete': !todo.completed}">{{todo.todoItem}}</label>
                                 </span>
                             </td>
-                            <!--<td> style="white-space: nowrap">-->
                             <td>
                                 <!-- form -->
                                 <form editable-form name="todoform" onbeforesave="updateTodo($data, todo.objectId)" ng-show="todoform.$visible" class="form-buttons form-inline">

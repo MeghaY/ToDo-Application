@@ -17,6 +17,23 @@ nconf.env()
   .file({ file: 'config/development.json' });
 
 app.set('port', process.argv[2]|| 8080);
+// Enable CORS
+var allowCrossDomain = function(req, res, next) {
+  'use strict';
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+
+  // intercept OPTIONS method
+  if ('OPTIONS' === req.method) {
+    res.send(200);
+  }
+  else {
+    next();
+  }
+};
+
+app.use(allowCrossDomain);
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -30,6 +47,10 @@ app.post('/api/todos', api.todoTask);
 app.get('/api/todos', api.getTodos);
 app.delete('/api/deleteTodo', api.deleteTodo);
 app.put('/api/updateTodo', api.updateTodo);
+
+app.post('/api/users', api.signup);
+app.get('/api/login', api.login);
+app.put('/api/updateUser', api.updateUser);
 
 
 app.listen(app.get('port'));
