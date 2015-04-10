@@ -1,10 +1,12 @@
-'use strict';
 
 /**
  * Controller of the TodoApp
  */
+
 angular.module('TodoApp')
   .controller('TodoController',['$scope','$state','$stateParams','$sessionStorage','$todoParse','$alert', function ($scope, $state, $stateParams, $sessionStorage, $todoParse, $alert) {
+    'use strict';
+
     $scope.newTodo = {};
     $scope.getAllTodos = [];
 
@@ -38,8 +40,8 @@ angular.module('TodoApp')
           //setting the ACLs for new todoitem added based on current user's sessiontoken via update call to parse endpoint
           $scope.ACL = {};
           $scope.ACL[$sessionStorage.currentUser.objectId] = {
-            "read": true,
-            "write": true
+            'read': true,
+            'write': true
           };
           var userACL = {
             ACL: $scope.ACL

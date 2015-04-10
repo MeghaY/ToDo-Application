@@ -1,8 +1,11 @@
 /**
  * Created by megha on 2/18/15.
  */
+
 angular.module('TodoApp')
   .controller('LoginController',['$scope','$http','$state','$sessionStorage','$todoParse','$alert', function($scope,$http,$state,$sessionStorage,$todoParse,$alert){
+    'use strict';
+
     $scope.login = {};
     $scope.loginSubmit = function(){
 

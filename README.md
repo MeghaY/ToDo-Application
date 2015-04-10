@@ -30,13 +30,11 @@ A Todo Application designed using AngularJS as a Front-end, NodeJS as a server-s
 
 ## To run the application
 
-1. `node server.js`
-  1. Once all the above steps are completed, use this command to run the server
-  2. You will see a message saying "Todo app listening on port `http://localhost:8080`"
+1. `grunt server`
+  1. Once all the above steps are completed, use this command in the terminal to run the server
+  2. You will see a bunch of automatic tasks run by grunt and then browser will load the app url with message saying "Todo app listening on port `http://localhost:8080`"
 
-2. open your browser and go to this url `http://localhost:8080` and app will be loaded.
-
-3. Start adding todo tasks and you will see a table populated with values.
+2. Start adding todo tasks and you will see a table populated with values.
 
 ## Functionality
 
@@ -46,6 +44,7 @@ A Todo Application designed using AngularJS as a Front-end, NodeJS as a server-s
 4. Marking the todo item as done/undone using the checkbox
 5. User signup/login functionality added with form validations
 6. User can signup or login using their credentials and can see their todos
+7. Introduced grunt tasks to automate the process
 
 ## Coming next..
 1. logout functionality

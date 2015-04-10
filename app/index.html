@@ -6,18 +6,12 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
       <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
       <link href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/yeti/bootstrap.min.css" rel="stylesheet">
       <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
       <link href="bower_components/angular-busy/dist/angular-busy.css" rel="stylesheet">
       <link href="bower_components/angular-xeditable/dist/css/xeditable.css" rel="stylesheet">
-      <link rel="stylesheet" href="styles/main.css">
-    <!-- endbuild -->
+      <link rel="stylesheet" href="styles/master.css">
   </head>
   <body ng-app="TodoApp">
     <!--[if lt IE 7]>
@@ -41,15 +35,10 @@
        ga('send', 'pageview');
     </script>
 
-    <!-- build:js(.) scripts/oldieshim.js -->
     <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
     <script src="bower_components/json3/lib/json3.js"></script>
     <![endif]-->
-    <!-- endbuild -->
-
-    <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
@@ -63,16 +52,12 @@
     <script src="bower_components/angular-busy/dist/angular-busy.js"></script>
     <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
     <script src="bower_components/ngstorage/ngStorage.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/todoController.js"></script>
         <script src="scripts/controllers/signupController.js"></script>
         <script src="scripts/controllers/loginController.js"></script>
         <script src="scripts/services/parse_service.js"></script>
         <script src="scripts/services/alerts.js"></script>
-        <!-- endbuild -->
 </body>
 </html>

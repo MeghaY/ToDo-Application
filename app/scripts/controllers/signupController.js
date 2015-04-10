@@ -5,7 +5,7 @@
 angular.module('TodoApp')
   .controller('SignupController',['$scope','$state','$sessionStorage','$todoParse','$alert',
     function($scope,$state, $sessionStorage,$todoParse, $alert){
-      var signup = {};
+      'use strict';
 
       $scope.signupSubmit = function(){
         var userData = {
@@ -31,6 +31,6 @@ angular.module('TodoApp')
               $alert.addAlert(error.data.error.error, 'danger',3000);
             }
           });
-      }
+      };
 
   }]);

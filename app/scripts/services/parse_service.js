@@ -1,15 +1,15 @@
 /**
  * Created by megha on 2/12/15.
  */
-'use strict';
 
 //A service module for making server side calls to Parse from client side using Angular Resource.
 //$resource service will point to express server url and express-nodejs server will make the actual call to Parse service using
 // secured tokens. That way the tokens/keys would not be exposed to client-side and will be secured.
-'use strict';
 angular.module('ParseService',['ngResource'])
   .factory('$todoParse',['$resource', function($resource){
-    var parseUrl = "http://localhost:8080";
+    'use strict';
+
+    var parseUrl = 'http://localhost:8080';
 
     //to transform the response into json for getting an array of results
     var arrayResponse = function (data) {
@@ -76,6 +76,6 @@ angular.module('ParseService',['ngResource'])
           transformResponse: singleResponse
         }
       })
-    }
+    };
   }]);
 

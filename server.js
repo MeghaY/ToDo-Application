@@ -1,7 +1,6 @@
 /**
  * Created by megha on 1/30/15.
  */
-'use strict';
 
 var express = require('express'),
   morgan  = require('morgan'),

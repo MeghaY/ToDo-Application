@@ -1,9 +1,9 @@
-'use strict';
 
 /**
  *
  * Main module of the application.
  */
+
 angular
   .module('TodoApp', [
     'ngAnimate',
@@ -21,6 +21,8 @@ angular
     'AlertService'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
+    'use strict';
+
     $stateProvider
       .state('signup', {
         url: '/signup',
@@ -44,6 +46,8 @@ angular
   })
   .run(['$rootScope', '$sessionStorage', '$state',
     function($rootScope, $sessionStorage, $state) {
+      'use strict';
+
       //// if route requires authentication and current user is not logged in then this will redirect the user back to login page
       $rootScope.$on('$stateChangeStart', function (event, toState) {
         if (toState.authenticate && !$sessionStorage.currentUser) {
