@@ -6,12 +6,23 @@
 <br>
 
 <div class="row">
-    <div class="col-md-3 col-md-offset-9">
-        <h3>Welcome {{fname}}!</h3>
+    <div class="col-md-3">
+        <div class="form-group">
+            <h3>Welcome {{fname}}!</h3>
+        </div>
+    </div>
+    <div class="col-md-1 col-md-offset-8">
+        <form name="logoutForm">
+            <br/>
+            <div class="form-group">
+                <button type="button" class="btn custom-button" ui-sref="logout">Logout</button>
+            </div>
+        </form>
     </div>
 </div>
+
 <div class="row">
-<div class="col-md-10 col-md-offset-2">
+<div class="col-md-10 col-md-offset-1">
     <div class="well">
         <form name="addListForm">
             <div class="form-group required">
@@ -36,7 +47,7 @@
 </div>
 </div>
     <div class="row">
-        <div class="col-md-10 col-md-offset-2" ng-show="getAllTodos.length > 0">
+        <div class="col-md-10 col-md-offset-1" ng-show="getAllTodos.length > 0">
             <div class="panel">
                 <div class="panel-heading">
                     <h3 class="panel-title">Todo List</h3>

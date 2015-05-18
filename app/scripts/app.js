@@ -41,6 +41,10 @@ angular
         templateUrl: 'views/addNew.html',
         controller: 'TodoController',
         authenticate: true
+      })
+      .state('logout', {
+        url: '/logout',
+        controller: 'LogoutController'
       });
     $urlRouterProvider.otherwise('/login');
   })
