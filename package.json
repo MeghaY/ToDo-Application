@@ -5,7 +5,7 @@
   "dependencies": {
     "express": "~4.1.1",
     "body-parser": "~1.5.2",
-    "ejs": "~0.8.5",
+    "ejs": "~2.5.5",
     "parse": "*",
     "nconf": "~0.6.9",
     "morgan": "~1.0.0",
